@@ -2,18 +2,20 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Screen1 from './src/screens/Screen1';
-import Screen2 from './src/screens/Screen2';
+import Clients from './src/screens/Clients';
+import Screen0 from './src/screens/Screen0';
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
    <NavigationContainer>
-    <Stack.Navigator>
-       <Stack.Screen name = 'Экран 2' component = {Screen1}/>
-       <Stack.Screen name = 'Экран 1' component = {Screen2}/>
+    <Stack.Navigator >
        
+       <Stack.Screen name = 'Клиенты'  options={{headerShown: false}} component = {Clients}/>
+       <Stack.Screen name = '0' options={{headerShown: false}} component = {Screen0}/>
+      
     </Stack.Navigator>
    </NavigationContainer>
   );
