@@ -1,36 +1,70 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, SafeAreaView, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, SafeAreaView, ScrollView, FlatList } from 'react-native';
 import GreyButton from '../components/GreyButton';
 import RedButtom from '../components/RedButton';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Counter from './Counter';
+//import { FlatList } from 'react-native-gesture-handler';
+
+
 
 export default function Clients({navigation}) {
-  const clients = [ivanov,petrov,fomina];
-
-  const clientComponent = clients.map( (item, i) => {
+  const clients = [ivanov,petrov,fomina, ivanov];
+  const renderItem = ({item}) => {
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("0", item)}>
-          <GreyButton title={item.name+" "+item.surname}/>
-        </TouchableOpacity>
-    )
-  })
+      <TouchableOpacity onPress={() => navigation.navigate("0", item)}>
+        <GreyButton title={item.name+" "+item.surname}/>
+      </TouchableOpacity>
+  
+    )};
+
+  //  const clientComponent = clients.map( (item, i) => {
+  //   return (
+  //       <TouchableOpacity onPress={() => navigation.navigate("0", item)}>
+  //         <GreyButton title={item.name+" "+item.surname}/>
+  //       </TouchableOpacity>
+  //   )
+  // })
+
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'Дворник', value: 'Дворник'},
+    {label: 'Директор', value: 'Директор'}
+  ]);
 
   return (
+   
    <View>  
       <SafeAreaView>
-      
+        
         <View> 
           <RedButtom title="Клиенты"/>
         </View>
-      
+        <Counter/>
         <View style={styles.grey}> 
           <ScrollView>
-            {clientComponent}
+          <DropDownPicker
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
+          />
+            <FlatList
+              data = {clients}
+              renderItem = {renderItem}
+            />
           </ScrollView>
         </View>
       </SafeAreaView>
    </View>  
   );
 }
+
+
 
 let ivanov = {
   name: "Иван",
@@ -42,6 +76,7 @@ let ivanov = {
   isBlocked: true,
   couponsNumber: 7,
   couopnsOnHands: 2,
+  position: "Дворник"
 }
 let petrov = {
   name: "Петр",
@@ -53,6 +88,7 @@ let petrov = {
   isBlocked: false,
   couponsNumber: 12,
   couopnsOnHands: 0,
+  position: "Директор"
 }
 let fomina = {
   name: "Прасковья",
@@ -64,6 +100,7 @@ let fomina = {
   isBlocked: false,
   couponsNumber: 12,
   couopnsOnHands: 0,
+  position: "Директор"
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,5 @@
 import React from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,6 +8,8 @@ import Screen0 from './src/screens/Screen0';
 
 
 const Stack = createStackNavigator();
+
+
 
 export default function App() {
   return (
