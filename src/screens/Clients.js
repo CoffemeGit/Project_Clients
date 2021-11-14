@@ -44,7 +44,6 @@ export default function Clients({navigation}) {
         </View>
         <Counter/>
         <View style={styles.grey}> 
-          <ScrollView>
           <DropDownPicker
             open={open}
             value={value}
@@ -57,7 +56,6 @@ export default function Clients({navigation}) {
               data = {clients}
               renderItem = {renderItem}
             />
-          </ScrollView>
         </View>
       </SafeAreaView>
    </View>  

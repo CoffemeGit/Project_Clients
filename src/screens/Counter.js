@@ -8,7 +8,7 @@ export default class Counter extends React.Component {
       return (
         <View>
           <Text>Вы нажали кнопку 5 раз</Text>
-          <button title = 'Нажми на меня'/>
+          <Button title = 'Нажми на меня'/>
         </View>
       );
     }
